@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "MariusC",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "mongoose": "^5.4.3",
-     "nodemon": "~1.0.14"
-  } 
+    "nodemon": "~1.0.14",
+    "snyk": "^1.198.0"
+  },
+  "snyk": true
 }
