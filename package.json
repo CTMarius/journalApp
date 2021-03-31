@@ -12,9 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.12.2",
+    "mongoose": "^5.12.3",
     "nodemon": "~1.0.14",
-    "snyk": "^1.210.0"
+    "snyk": "^1.230.7"
   },
   "snyk": true
 }
