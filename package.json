@@ -14,7 +14,7 @@
     "express": "^4.16.4",
     "mongoose": "^6.4.6",
     "nodemon": "~1.0.14",
-    "snyk": "^1.685.0"
+    "snyk": "^1.996.0"
   },
   "engines" : { "node" : ">=0.12" },
   "snyk": true
