@@ -11,7 +11,7 @@
   "author": "MariusC",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "mongoose": "^6.4.6",
     "nodemon": "~1.0.14",
     "snyk": "^1.996.0"
