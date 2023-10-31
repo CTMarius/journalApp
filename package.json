@@ -14,7 +14,8 @@
     "express": "^4.17.3",
     "mongoose": "4.13.8",
     "nodemon": "~1.0.14",
-    "snyk": "^1.1064.0"
+    "snyk": "^1.1064.0",
+    "mongodb": "3.4.4"
   },
   "engines" : { "node" : ">=0.12" },
   "snyk": true
