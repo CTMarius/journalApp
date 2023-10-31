@@ -23,7 +23,14 @@ var routes = require('./api/routes/journalRoutes'); //importing route
 routes(app); //register the route
 
 
-app.listen(port, 'localhost', () => {
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert"),
+    },
+    app
+  ).listen(port, 'localhost', () => {
   console.log(`API Server is running on port ${port}`);
 });
 
