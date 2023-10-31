@@ -5,6 +5,7 @@ var express = require('express'),
   Task = require('./api/models/journalModel'), //created model loading here
   bodyParser = require('body-parser');
   https = require("https");
+  fs = require("fs");
    
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
