@@ -7,7 +7,7 @@ var express = require('express'),
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://10.0.3.80:27017/journaldb?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://10.0.3.80:27017/journaldb?retryWrites=true&w=majority'); 
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
