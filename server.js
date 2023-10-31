@@ -25,7 +25,9 @@ var routes = require('./api/routes/journalRoutes'); //importing route
 routes(app); //register the route
 
 
-app.listen(port);
+app.listen(port, 'localhost', () => {
+  console.log(`API Server is running on port ${port}`);
+});
 
 
 console.log('todo list RESTful API server started on: ' + port);
