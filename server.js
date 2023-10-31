@@ -4,8 +4,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Task = require('./api/models/journalModel'), //created model loading here
   bodyParser = require('body-parser');
-  const cors = require('cors');
-  
+   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/journalapi?retryWrites=true&w=majority'); 
@@ -16,7 +15,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
