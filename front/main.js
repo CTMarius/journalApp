@@ -30,9 +30,8 @@ const checkText = () => {
     xhr.send(JSON.stringify(data));
   };
   
-  const postMethod = (content, date) => {
-    const baseUrl = 'http://localhost:3000'; // Use HTTPS
-    const url = `${baseUrl}/api/entry`;
+  const postMethod = (content, date) => {    
+    const url = `/api/entry`;
     const body = { 'name': content, 'Created_date': date };
   
     sendRequest('POST', url, body, () => {
@@ -40,11 +39,10 @@ const checkText = () => {
     });
   };
   
-  const getMethod = () => {
-    const baseUrl = 'http://localhost:3000'; // Use HTTPS
+  const getMethod = () => {    
     document.getElementById('textarea').value = '';
     const needle = document.getElementById('datepicker').value;
-    const url = `${baseUrl}/api/entry?date=${encodeURIComponent(needle)}`;
+    const url = `/api/entry?date=${encodeURIComponent(needle)}`;
   
     sendRequest('GET', url, null, (text) => {
       const d = new Date(needle).toISOString();
