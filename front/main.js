@@ -46,10 +46,11 @@ const checkText = () => {
   
     sendRequest('GET', url, null, (text) => {
       const d = new Date(needle).toISOString();
-      const element = text.find((element) => element['Created_date'] === d);
+      console.log(text);
+      const element = text.at(-1).find((element) => element['Created_date'] === d);
       if (element) {
         console.log(element);
-        document.getElementById('textarea').value = element.reverse()[0].name;
+        document.getElementById('textarea').value = element.name;
       }
     });
   };
