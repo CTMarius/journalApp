@@ -48,7 +48,7 @@ const checkText = () => {
       const d = new Date(needle).toISOString();
       const element = text.find((element) => element['Created_date'] === d);
       if (element) {
-        document.getElementById('textarea').value = element.name;
+        document.getElementById('textarea').value = element.at(-1).name;
       }
     });
   };
