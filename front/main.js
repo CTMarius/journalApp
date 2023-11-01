@@ -44,13 +44,10 @@ const checkText = () => {
     const needle = document.getElementById('datepicker').value;
     const url = `/entry?date=${encodeURIComponent(needle)}`;
   
-    sendRequest('GET', url, null, (text) => {
-      const d = new Date(needle).toISOString();      
-      const element = text.find((element) => element['Created_date'] === d);
-      console.log(element[element.length-1]);
-      if (element) {
-        console.log(element);
-        document.getElementById('textarea').value = element[element.length-1].name;
+    sendRequest('GET', url, null, (text) => {        
+      const element = text.slice(-1);;      
+      if (element) {       
+        document.getElementById('textarea').value = element.name;
       }
     });
   };
