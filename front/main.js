@@ -45,9 +45,9 @@ const checkText = () => {
     const url = `/entry?date=${encodeURIComponent(needle)}`;
   
     sendRequest('GET', url, null, (text) => {
-      const d = new Date(needle).toISOString();
-      console.log(text);
+      const d = new Date(needle).toISOString();      
       const element = text.find((element) => element['Created_date'] === d);
+      console.log(element[element.length - 1]);
       if (element[element.length - 1]) {
         console.log(element);
         document.getElementById('textarea').value = element.name;
