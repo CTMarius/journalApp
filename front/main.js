@@ -47,10 +47,10 @@ const checkText = () => {
     sendRequest('GET', url, null, (text) => {
       const d = new Date(needle).toISOString();      
       const element = text.find((element) => element['Created_date'] === d);
-      console.log(element[element.length - 1]);
-      if (element[element.length - 1]) {
+      console.log(element[element.length-1]);
+      if (element) {
         console.log(element);
-        document.getElementById('textarea').value = element.name;
+        document.getElementById('textarea').value = element[element.length-1].name;
       }
     });
   };
