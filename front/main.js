@@ -46,7 +46,7 @@ const checkText = () => {
   
     sendRequest('GET', url, null, (text) => {
       const d = new Date(needle).toISOString();      
-      const element = text.find((element) => element['Created_date'].slice(-1) === d);      
+      const element = text.at(text.length - 1);;      
       if (element) {       
         document.getElementById('textarea').value = element.name;
       }
