@@ -44,8 +44,9 @@ const checkText = () => {
     const needle = document.getElementById('datepicker').value;
     const url = `/entry?date=${encodeURIComponent(needle)}`;
   
-    sendRequest('GET', url, null, (text) => {        
-      const element = text.slice(-1);;      
+    sendRequest('GET', url, null, (text) => {
+      const d = new Date(needle).toISOString();      
+      const element = text.find((element) => element['Created_date'].slice(-1) === d);      
       if (element) {       
         document.getElementById('textarea').value = element.name;
       }
