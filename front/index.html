@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="main.js"></script>
+</head>
+<body onload="initializePage()" class="body">
+  <div class="app">
+    <div id="titlebar"></div>
+    <div class="datepicker">
+      <label for="datepicker">Select date:</label>
+      <input type="date" id="datepicker" onchange="getMethod()">
+    </div>
+    <div>
+      <textarea id="textarea" class="textarea" oninput="checkText()"></textarea>
+    </div>
+    <div>
+      <button id="save" class="savebutton" onclick="saveContent()" disabled>Save</button>
+    </div>
+  </div>
+</body>
+</html>

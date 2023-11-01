@@ -11,6 +11,8 @@ fs = require("fs");
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/journalapi?retryWrites=true&w=majority');
 
+app.use(express.static('front'));
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*'); // Replace with the appropriate origin(s)
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -31,6 +33,3 @@ app.
 listen(port, 'localhost', () => {
   console.log(`API Server is running on port ${port}`);
 });
-
-
-console.log('todo list RESTful API server started on: ' + port);

@@ -1,0 +1,86 @@
+ .body{
+     background: #FFFFFF;
+     text-align: center;
+     padding: 15px;
+     font-weight: normal;
+}
+ .app {
+     padding: 70px 25px;
+     background: #FFFFFF;
+     text-align: left;
+     margin: auto;
+     width: 75%;
+     padding: 10px;
+     min-height: 1px;
+     padding-right: 15px;
+     padding-left: 15px;
+     flex-basis: 0;
+     flex-grow: 1;
+     max-width: 100%;
+     display: flex;
+     flex-direction: column;
+}
+ .textarea {
+     padding: 25px;
+     height: 500px;
+     background: white;
+     text-align: left;
+     font-family: -BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #212529;
+     text-align: left;
+     box-sizing: border-box;
+     position: relative;
+     width: 100%;
+     min-height: 1px;
+     padding-right: 15px;
+     padding-left: 15px;
+     flex-basis: 0;
+     flex-grow: 1;
+     max-width: 100%;
+     display: flex;
+     flex-direction: column;
+}
+
+/* Styles for the Save button */
+.savebutton {
+  display: block;
+  width: 10%;
+  border: none;
+  background-color: #d8d8d8;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 25px;
+
+  /* Responsive styles for mobile devices */
+  min-width: 100px; /* Adjust the value as needed */
+  padding: 10px;    /* Adjust the padding as needed */
+}
+
+/* Styles for the Save button when active */
+.savebutton-active {
+  display: block;
+  width: 10%;
+  border: none;
+  background-color: #F4D03F;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+
+  /* Responsive styles for mobile devices in the active state */
+  min-width: 100px; /* Adjust the value as needed */
+  padding: 10px;    /* Adjust the padding as needed */
+}
+
+.datepicker{
+  padding: 15px 0px;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }  
+}
