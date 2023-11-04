@@ -50,7 +50,7 @@ const getMethod = () => {
 
     if (data.length > 0) {
       // Assuming 'name' is the field you want to display
-      document.getElementById('textarea').value = data[0].name;
+      document.getElementById('textarea').value = data[1].name;
     }
 
   })
