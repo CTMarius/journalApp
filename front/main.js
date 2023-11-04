@@ -44,9 +44,9 @@ const getMethod = () => {
   const needle = document.getElementById('datepicker').value;
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
-  sendRequest('GET', url, null, (data) => {
+  sendRequest('GET', url, null, (response) => {
     // Assuming the response is in JSON format
-    data = JSON.parse(response);
+    const data = JSON.parse(response);
 
     if (data.length > 0) {
       // Assuming 'name' is the field you want to display
