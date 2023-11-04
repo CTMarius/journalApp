@@ -53,8 +53,8 @@ const getMethod = () => {
       document.getElementById('textarea').value = data[0].name;
     }
 
-  }
-  };
+  })
+};
 
 const saveContent = () => {
   const date = document.getElementById('datepicker').value;
