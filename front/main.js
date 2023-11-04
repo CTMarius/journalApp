@@ -45,15 +45,23 @@ const getMethod = () => {
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
   sendRequest('GET', url, null, (response) => {
-    // Assuming the response is in JSON format
     const data = JSON.parse(response);
 
-    if (data.length > 0) {
-      // Assuming 'name' is the field you want to display
-      document.getElementById('textarea').value = data[1].name;
-    }
+    // Filter entries for the selected date
+    const entriesForDate = data.filter(entry => entry.date === needle);
 
-  })
+    if (entriesForDate.length > 0) {
+      // Sort the entries in descending order by creation date and pick the first one
+      const lastEntry = entriesForDate.sort((a, b) => {
+        return new Date(b.createdDate) - new Date(a.createdDate);
+      })[0];
+
+      document.getElementById('textarea').value = lastEntry.name; // Assuming 'name' is the field you want to display
+    } else {
+      // Handle the case when no entry is found for the selected date
+      document.getElementById('textarea').value = 'No entry found for this date.';
+    }
+  });
 };
 
 const saveContent = () => {
