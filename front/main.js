@@ -46,7 +46,7 @@ const getMethod = () => {
 
   sendRequest('GET', url, null, (data) => {
     // Assuming the response is in JSON format
-    const data = JSON.parse(response);
+    data = JSON.parse(response);
 
     if (data.length > 0) {
       // Assuming 'name' is the field you want to display
