@@ -32,7 +32,10 @@ const sendRequest = (method, url, data, callback) => {
 
 const postMethod = (content, date) => {
   const url = `/entry`;
-  const body = { 'name': content, 'Created_date': date };
+  const body = {
+    'name': content,
+    'Created_date': date
+  };
 
   sendRequest('POST', url, body, () => {
     // Handle the response if needed
@@ -46,13 +49,13 @@ const getMethod = () => {
 
   sendRequest('GET', url, null, (response) => {
     // Filter entries for the selected date    
-    const entriesForDate = response.filter(entry  => {
+    const entriesForDate = response.filter(entry => {
       if (entry.Created_date && entry.Created_date.startsWith(needle)) {
         return true;
       }
       return false;
     });
-    
+
     if (entriesForDate.length > 0) {
       // Sort the entries in descending order by creation date and pick the first one
       const lastEntry = entriesForDate.sort((a, b) => {
