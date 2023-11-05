@@ -42,8 +42,7 @@ const postMethod = (content, date) => {
   });
 };
 
-const getMethod = () => {
-  document.getElementById('textarea').value = '';
+const getMethod = () => {  
   const needle = document.getElementById('datepicker').value;
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
@@ -65,7 +64,7 @@ const getMethod = () => {
       document.getElementById('textarea').value = lastEntry.name; // Assuming 'name' is the field you want to display
     } else {
       // Handle the case when no entry is found for the selected date
-      document.getElementById('textarea').value = 'No entry found for this date.';
+      document.getElementById('textarea').value = '';
     }
   });
 };
