@@ -47,7 +47,7 @@ console.log(needle);
   sendRequest('GET', url, null, (response) => {
 
     // Filter entries for the selected date
-    const entriesForDate = response.filter(entry => console.log(entry['Created_date']) );
+    const entriesForDate = response.filter(entry => console.log(entry.date) );
     //.includes(needle
    
 console.log(entriesForDate);
