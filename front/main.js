@@ -44,7 +44,7 @@ const postMethod = (content, date) => {
 
 const getMethod = () => {  
   const needle = document.getElementById('datepicker').value;
-  const url = `/entry?date=${encodeURIComponent(needle)}`;
+  const url = `/entry`;
 
   sendRequest('GET', url, null, (response) => {
     // Filter entries for the selected date    
