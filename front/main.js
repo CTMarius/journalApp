@@ -43,16 +43,16 @@ const getMethod = () => {
   document.getElementById('textarea').value = '';
   const needle = document.getElementById('datepicker').value;
   const url = `/entry?date=${encodeURIComponent(needle)}`;
+
   sendRequest('GET', url, null, (response) => {
     // Filter entries for the selected date
-    const entriesForDate = response.filter(entry => entry.date.includes(needle) );
-    //.includes(needle
-
+    const entriesForDate = response.filter(entry => entry.created_date.includes(needle) );
+    
     if (entriesForDate.length > 0) {
       // Sort the entries in descending order by creation date and pick the first one
       const lastEntry = entriesForDate.sort((a, b) => {
         return new Date(b.createdDate) - new Date(a.createdDate);
-      })[1];
+      })[0];
 
       document.getElementById('textarea').value = lastEntry.name; // Assuming 'name' is the field you want to display
     } else {
