@@ -41,14 +41,14 @@ const postMethod = (content, date) => {
 
 const getMethod = () => {
   document.getElementById('textarea').value = '';
-  const desiredDate = document.getElementById('datepicker').value;
+  const needle = document.getElementById('datepicker').value;
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
   sendRequest('GET', url, null, (response) => {
     // Filter entries for the selected date
     
     const entriesForDate = response.filter(entry  => {
-      if (entry.Created_date && entry.Created_date.startsWith(desiredDate)) {
+      if (entry.Created_date && entry.Created_date.startsWith(needle)) {
         return true;
       }
       return false;
