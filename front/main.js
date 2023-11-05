@@ -41,7 +41,7 @@ const postMethod = (content, date) => {
 
 const getMethod = () => {
   document.getElementById('textarea').value = '';
-  const needle = document.getElementById('datepicker').value;
+  const desiredDate = document.getElementById('datepicker').value;
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
   sendRequest('GET', url, null, (response) => {
