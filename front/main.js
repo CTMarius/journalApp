@@ -45,8 +45,7 @@ const getMethod = () => {
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
   sendRequest('GET', url, null, (response) => {
-    // Filter entries for the selected date
-    
+    // Filter entries for the selected date    
     const entriesForDate = response.filter(entry  => {
       if (entry.Created_date && entry.Created_date.startsWith(needle)) {
         return true;
