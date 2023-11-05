@@ -45,12 +45,9 @@ const getMethod = () => {
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
   sendRequest('GET', url, null, (response) => {
-    console.log(response);
-    const data = response;
-    console.log(data)
 
     // Filter entries for the selected date
-    const entriesForDate = data.filter(entry => entry.date === needle);
+    const entriesForDate = response.filter(entry => entry.Created_date === needle);
 
     if (entriesForDate.length > 0) {
       // Sort the entries in descending order by creation date and pick the first one
