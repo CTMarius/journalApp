@@ -45,7 +45,9 @@ const getMethod = () => {
   const url = `/entry?date=${encodeURIComponent(needle)}`;
 
   sendRequest('GET', url, null, (response) => {
-    const data = JSON.parse(response);
+    console.log(response);
+    const data = response;
+    console.log(data)
 
     // Filter entries for the selected date
     const entriesForDate = data.filter(entry => entry.date === needle);
