@@ -43,12 +43,12 @@ const getMethod = () => {
   document.getElementById('textarea').value = '';
   const needle = document.getElementById('datepicker').value;
   const url = `/entry?date=${encodeURIComponent(needle)}`;
-
+console.log(needle);
   sendRequest('GET', url, null, (response) => {
 
     // Filter entries for the selected date
     const entriesForDate = response.filter(entry => entry.Created_date === needle);
-
+console.log(entriesForDate);
     if (entriesForDate.length > 0) {
       // Sort the entries in descending order by creation date and pick the first one
       const lastEntry = entriesForDate.sort((a, b) => {
