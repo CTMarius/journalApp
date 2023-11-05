@@ -46,8 +46,9 @@ const getMethod = () => {
 
   sendRequest('GET', url, null, (response) => {
     // Filter entries for the selected date
-    const entriesForDate = response.filter(entry => entry.created_date.includes(needle) );
     
+    const entriesForDate = response.filter(entry =>console.log(entry)  );
+    //entry.created_date.includes(needle)
     if (entriesForDate.length > 0) {
       // Sort the entries in descending order by creation date and pick the first one
       const lastEntry = entriesForDate.sort((a, b) => {
