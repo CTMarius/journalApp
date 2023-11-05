@@ -59,7 +59,7 @@ const getMethod = () => {
       // Sort the entries in descending order by creation date and pick the first one
       const lastEntry = entriesForDate.sort((a, b) => {
         return new Date(b.createdDate) - new Date(a.createdDate);
-      })[0];
+      })[entriesForDate.length - 1];
 
       document.getElementById('textarea').value = lastEntry.name; // Assuming 'name' is the field you want to display
     } else {
