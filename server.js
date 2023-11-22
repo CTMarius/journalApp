@@ -24,9 +24,42 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+const express = require('express');
+const basicAuth = require('basic-auth');
+
+const app = express();
+
+// Middleware for Basic Authentication
+const authenticate = (req, res, next) => {
+  const credentials = basicAuth(req);
+
+  // Check if credentials are valid
+  if (
+    !credentials ||
+    !validateCredentials(credentials.name, credentials.pass)
+  ) {
+    res.setHeader('WWW-Authenticate', 'Basic realm="Authentication Required"');
+    return res.status(401).send('Unauthorized');
+  }
+
+  // Valid credentials, proceed to the next middleware
+  next();
+};
+
+// Function to validate credentials (replace this with your own logic)
+const validateCredentials = (username, password) => {
+  // Replace this with your authentication logic
+  return (
+    username === 'admin' &&
+    password === 'admin'
+  );
+};
 
 var routes = require('./api/routes/journalRoutes'); //importing route
 routes(app); //register the route
+
+// Apply Basic Authentication Middleware to journal routes
+app.use('/api/journal', authenticate);
 
 
 app.
