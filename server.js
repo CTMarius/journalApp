@@ -8,7 +8,7 @@ var express = require('express'),
 
 // Mongoose instance connection URL connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/journalapi?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/journalapi?retryWrites=true&w=majority');
 
 app.use(express.static('front'));
 
@@ -49,12 +49,13 @@ const validateCredentials = (username, password) => {
   );
 };
 
-// Middleware for parsing request bodies
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// Apply Basic Authentication Middleware to journal routes
-app.use('/api/journal', authenticate);
+// Middleware to apply Basic Authentication only to index.html
+app.use((req, res, next) => {
+  if (req.url === '/index.html') {
+    return authenticate(req, res, next);
+  }
+  next();
+});
 
 // Register routes
 var routes = require('./api/routes/journalRoutes'); // importing route
