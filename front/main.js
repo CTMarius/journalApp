@@ -25,7 +25,12 @@ const sendRequest = (method, url, data, callback) => {
   xhr.onload = () => {
     if (xhr.status === 200) {
       callback(JSON.parse(xhr.responseText));
+    } else {
+      console.error(`Request failed with status ${xhr.status}`);
     }
+  };
+  xhr.onerror = () => {
+    console.error('Network error occurred');
   };
   xhr.send(JSON.stringify(data));
 };
@@ -85,4 +90,31 @@ const saveContent = () => {
 const initializePage = () => {
   setTodaysDate();
   getMethod();
-}
+};
+
+const authenticateUser = () => {
+  const username = window.prompt('Enter your username:');
+  const password = window.prompt('Enter your password:');
+
+  // Perform the authentication logic
+  sendAuthenticationRequest(username, password);
+};
+
+const sendAuthenticationRequest = (username, password) => {
+  const url = '/authenticate'; // Change this to your authentication endpoint
+  const data = { username, password };
+
+  sendRequest('POST', url, data, (response) => {
+    if (response.authenticated) {
+      // Authentication successful, proceed with other logic
+      console.log('Authentication successful!');
+      initializePage(); // Call your initialization logic here
+    } else {
+      // Authentication failed, handle accordingly
+      console.log('Authentication failed!');
+    }
+  });
+};
+
+// Trigger authentication when the page loads
+authenticateUser();
