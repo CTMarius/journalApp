@@ -1,15 +1,28 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  Task = require('./api/models/journalModel'), //created model loading here
-  bodyParser = require('body-parser');
-https = require("https");
-fs = require("fs");
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+const Task = require('./api/models/journalModel');
+const bodyParser = require('body-parser');
+const basicAuth = require('basic-auth');
+const https = require('https');
+const fs = require('fs');
+const helmet = require('helmet'); // Added for enhanced security
 
-// mongoose instance connection url connection
+// Use helmet middleware for security headers
+app.use(helmet());
+
+// Mongoose instance connection URL connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/journalapi?retryWrites=true&w=majority');
+mongoose.connect('mongodb://localhost:27017/journalapi?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('MongoDB connected');
+}).catch(err => {
+  console.error('MongoDB connection error:', err);
+  process.exit(1); // Exit the process if MongoDB connection fails
+});
 
 app.use(express.static('front'));
 
@@ -19,25 +32,16 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+// Middleware for parsing request bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-const express = require('express');
-const basicAuth = require('basic-auth');
-
-const app = express();
 
 // Middleware for Basic Authentication
 const authenticate = (req, res, next) => {
   const credentials = basicAuth(req);
 
   // Check if credentials are valid
-  if (
-    !credentials ||
-    !validateCredentials(credentials.name, credentials.pass)
-  ) {
+  if (!credentials || !validateCredentials(credentials.name, credentials.pass)) {
     res.setHeader('WWW-Authenticate', 'Basic realm="Authentication Required"');
     return res.status(401).send('Unauthorized');
   }
@@ -50,19 +54,26 @@ const authenticate = (req, res, next) => {
 const validateCredentials = (username, password) => {
   // Replace this with your authentication logic
   return (
-    username === 'admin' &&
-    password === 'admin'
+    username === "admin" &&
+    password === "admin"
+    // username === process.env.BASIC_AUTH_USERNAME &&
+    // password === process.env.BASIC_AUTH_PASSWORD
   );
 };
-
-var routes = require('./api/routes/journalRoutes'); //importing route
-routes(app); //register the route
 
 // Apply Basic Authentication Middleware to journal routes
 app.use('/api/journal', authenticate);
 
+// Register routes after middleware
+const routes = require('./api/routes/journalRoutes');
+routes(app);
 
-app.
-listen(port, 'localhost', () => {
+// Use HTTPS with proper certificates
+const options = {
+  key: fs.readFileSync('path/to/private-key.pem'),
+  cert: fs.readFileSync('path/to/certificate.pem')
+};
+
+https.createServer(options, app).listen(port, 'localhost', () => {
   console.log(`API Server is running on port ${port}`);
 });
