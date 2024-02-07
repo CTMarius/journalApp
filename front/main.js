@@ -43,7 +43,6 @@ const postMethod = (content, date) => {
   };
 
   sendRequest('POST', url, body, () => {
-    // Handle the response if needed
   });
 };
 
