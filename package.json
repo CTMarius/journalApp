@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "basic-auth": "^2.0.1",
-    "express": "^4.17.3",
+    "express": "^4.19.2",
     "helmet": "^3.21.2",
     "mongodb": "3.4.0",
     "mongoose": "^8.1.2",
